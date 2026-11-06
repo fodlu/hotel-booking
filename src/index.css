@@ -1,1 +1,31 @@
 @import "tailwindcss";
+
+@font-face{
+    font-family: "Fraunces";
+    src: url('./assets/fonts/fraunces/Fraunces-VariableFont_SOFT,WONK,opsz,wght.ttf');
+}
+@font-face{
+    font-family: "DMMono-Regular";
+    src: url('./assets/fonts/dm-mono/DMMono-Regular.ttf');
+}
+@font-face{
+    font-family: "DMSans";
+    src: url('./assets/fonts/dm-sans/DMSans-VariableFont_opsz,wght.ttf');
+}
+@font-face{
+    font-family: "DMMono-Medium";
+    src: url('./assets/fonts/dm-mono/DMMono-Medium.ttf');
+}
+@font-face{
+    font-family: "Fraunces-italic";
+    src: url('./assets/fonts/fraunces/Fraunces-Italic-VariableFont_SOFT,WONK,opsz,wght.ttf');
+}
+
+@theme{
+    --font-fraunces: "Fraunces";
+    --font-fraunces-italic: "Fraunces-italic";
+    --font-mono: "DMMono-Regular";
+    --font-sans: "DMSans";
+    --font-mono-medium: "DMMono-Medium";
+}
+

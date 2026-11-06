@@ -4,10 +4,10 @@ import Footer from "./components/Footer";
 
 const App = () => {
 	return (
-		<div className=''>
-			<div className='grid grid-cols-[15%_85%] h-screen'>
+		<div className='font-sans h-screen bg-[hsl(41,100%,93%)] text-sm'>
+			<div className='grid grid-cols-[20%_80%] h-screen'>
 				<Sidebar />
-				<main className=''>
+				<main className='p-5'>
 					<Main />
 				</main>
 			</div>
