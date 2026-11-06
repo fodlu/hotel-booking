@@ -9,17 +9,19 @@ const NAVITEMS = [
 ];
 
 const Sidebar = () => {
-	const [active, setActive] = useState(0)
+	const [active, setActive] = useState(0);
 
 	return (
-		<div className='h-screen border-r border-neutral-200 p-5 flex justify-between flex-col'>
+		<div className=' h-screen border-r border-neutral-200 p-5 flex justify-between flex-col'>
 			<div className=' border-b border-b-neutral-200 pb-3'>
 				<img src='images/logo.svg' alt='Hotel booking logo' />
 			</div>
 			<div className='flex-1 flex justify-between flex-col py-4'>
 				<nav className='flex flex-col gap-1'>
 					{NAVITEMS.map((item, i) => (
-						<button className={`rounded-lg flex gap-3 px-3 py-2 font-semibold text-neutral-500 hover:bg-gray-50 cursor-pointer ${active === i && "bg-white shadow-xs text-neutral-950"}`} onClick={() => setActive(i)}>
+						<button
+							className={`rounded-lg flex gap-3 px-3 py-2 font-semibold text-neutral-500 active:outline-2 active:outline-offset-2 active:outline-[hsl(15,69%,37%)] hover:bg-gray-50 cursor-pointer ${active === i && "bg-white shadow-xs text-neutral-950"}`}
+							onClick={() => setActive(i)}>
 							<img src={`images/${item.img}`} alt={item.title} />
 							{item.title}
 						</button>

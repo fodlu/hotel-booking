@@ -9,6 +9,36 @@ const ITEMSBOUGHT = [
 	{ item: "Tourist tax", price: "€ 14.40" },
 ];
 
+const FEATURES = [
+	{
+		img: "images/icon-key.svg",
+		tag: "Arrival",
+		step: "01",
+		title: "Check-in from 15:00",
+		date: "Sat, 25 April",
+		detail:
+			"Ring the brass bell by the blue door. If we're at the market, the key is in the terracotta pot by the olive tree.",
+	},
+	{
+		img: "images/icon-wifi.svg",
+		tag: "Wifi",
+		step: "02",
+		title: "Le Soleil · Guest",
+		date: "Password below",
+		wifi: true,
+		password: "soleil-2026",
+	},
+	{
+		img: "images/icon-key.svg",
+		tag: "Breakfast",
+		step: "03",
+		title: "Served 8 - 10:30",
+		date: "On the terrace",
+		detail:
+			"Fresh figs, Marseille honey, pain au levain, and espresso. Gluten-free option? Leave a note the night before.",
+	},
+];
+
 const Main = () => {
 	return (
 		<>
@@ -23,19 +53,19 @@ const Main = () => {
 					</p>
 				</div>
 				<div className='flex gap-3'>
-					<button className='cursor-pointer border-2 border-neutral-300 py-2 px-5 font-semibold text-neutral-900 rounded-4xl'>
+					<button className='active:outline-2 active:outline-offset-2 active:outline-[hsl(15,69%,37%)] cursor-pointer border-2 border-neutral-300 py-2 px-5 font-semibold text-neutral-900 rounded-4xl'>
 						Print receipt
 					</button>
-					<button className='cursor-pointer py-2 px-5 font-semibold bg-neutral-900 rounded-4xl text-neutral-200'>
+					<button className='active:outline-2 active:outline-offset-2 active:outline-[hsl(15,69%,37%)] border-2 border-neutral-300 cursor-pointer py-2 px-5 font-semibold bg-neutral-900 rounded-4xl text-neutral-200'>
 						Add to calendar
 					</button>
 				</div>
 			</div>
 
 			{/* Reciept and card */}
-			<section className='flex'>
+			<section className='grid grid-cols-6 py-20 '>
 				{/* Reciept */}
-				<div className='bg-white w-100 p-5 rounded-2xl'>
+				<div className='bg-white col-start-2 z-10 shadow-xl w-100 p-5 rounded-2xl -rotate-6'>
 					<div className='flex justify-between pb-3 border-b-2 border-neutral-200 border-dotted'>
 						<div className=''>
 							<p className='uppercase font-mono text-xs text-neutral-400'>
@@ -95,7 +125,7 @@ const Main = () => {
 				</div>
 
 				{/* <div className='bg-radial-[at_70%_10%] from-[hsl(22,72%,56%)] via-[hsl(18,62%,47%)] to-[hsl(15,69%,37%)] border-2 w-100 p-5 rounded-2xl'> */}
-				<div className='flex flex-col justify-between bg-[radial-gradient(circle_at_75%_15%,hsl(22,72%,56%)_0%,hsl(18,62%,47%)_35%,hsl(15,69%,37%)_65%,hsl(15,69%,37%)_100%)] w-100 p-5 rounded-2xl'>
+				<div className='flex flex-col col-start-4 z-50 shadow-xl justify-between bg-[radial-gradient(circle_at_75%_15%,hsl(22,72%,56%)_0%,hsl(18,62%,47%)_35%,hsl(15,69%,37%)_65%,hsl(15,69%,37%)_100%)] w-100 p-5 rounded-2xl rotate-6'>
 					<span className='w-full border-t-2 pt-4 border-dashed border-[hsl(22,72%,56%)] uppercase text-[hsl(41,100%,93%)] text-xs'>
 						welcome card
 					</span>
@@ -117,74 +147,68 @@ const Main = () => {
 					</div>
 
 					<p className='font-mono uppercase text-xs text-[hsl(41,100%,93%)]'>
-						Room <span className='block font-fraunces text-lg capitalize font-semibold'>La Garrigue</span>
+						Room{" "}
+						<span className='block font-fraunces text-lg capitalize font-semibold'>
+							La Garrigue
+						</span>
 					</p>
 				</div>
 			</section>
 
 			{/* Guest info row  */}
-			<section className=''>
-				<div className=''>
-					<div className=''>
-						<div className=''>
-							<div className=''>
-								<img src='images/icon-key.svg' alt='' />
+			<section className='flex gap-5'>
+				{FEATURES.map((item, i) => (
+					<div className='flex-1 shadow-lg rounded-3xl p-4 bg-[hsl(0,0%,100%)]'>
+						<div className='flex flex-col gap-5'>
+							<div className='flex justify-between items-center'>
+								<div className='flex items-center gap-2'>
+									<div
+										className={`flex p-1 rounded-md ${!(i % 2) ? "bg-[hsl(15,69%,37%)]" : "bg-blue-500"}`}>
+										<img src={item.img} alt='' />
+									</div>
+									<p
+										className={`uppercase font-mono-medium text-xs ${!(i % 2) ? "text-[hsl(15,69%,37%)]" : "text-blue-500"}`}>
+										{item.tag}
+									</p>
+								</div>
+								<p
+									className={`font-fraunces text-lg ${!(i % 2) ? "text-[hsl(15,69%,37%)]" : "text-blue-500"}`}>
+									{item.step}
+								</p>
 							</div>
-							<p className=''>Arrival</p>
-						</div>
-						<p className=''>01</p>
-					</div>
-					<p className=''>Check-in from 15:00</p>
-					<span className=''>Sat, 25 April</span>
-					<p className=''>
-						Ring the brass bell by the blue door. If we're at the market, the
-						key is in the terracotta pot by the olive tree.
-					</p>
-				</div>
-
-				<div className=''>
-					<div className=''>
-						<div className=''>
 							<div className=''>
-								<img src='images/icon-key.svg' alt='' />
+								<p className='font-fraunces font-semibold text-lg text-neutral-950'>
+									{item.title}
+								</p>
+								<span className='text-neutral-500'>{item.date}</span>
 							</div>
-							<p className=''>Wifi</p>
-						</div>
-						<p className=''>02</p>
-					</div>
-					<p className=''>Le Soleil · Guest</p>
-					<span className=''>Password below</span>
-					<div className=''>
-						<p className=''>Network</p>
-						<p className=''>Le Soleil · Guest</p>
-					</div>
+							{!item.wifi ?
+								<p className='text-neutral-600 font-semibold'>
+									Ring the brass bell by the blue door. If we're at the market,
+									the key is in the terracotta pot by the olive tree.
+								</p>
+							:	<div className='flex flex-col text-xs gap-2'>
+									<div className='flex justify-between uppercase font-mono bg-neutral-200 py-1.5 px-2 rounded-lg'>
+										<p className=' text-neutral-500'>Network</p>
+										<p className='font-semibold'>{item.title}</p>
+									</div>
+									<div className='rounded-lg py-1.5 px-2 bg-neutral-200 flex justify-between'>
+										<p className='uppercase text-xs font-mono text-neutral-500'>
+											password
+										</p>
 
-					<div className=''>
-						<p className=''>Password</p>
-						<div className=''>
-							<p className=''>soleil-2026</p>
-							<button className=''>Copy</button>
+										<div className='flex gap-2'>
+											<p className='font-semibold'>{item.password}</p>
+											<button className='cursor-pointer uppercase border px-1.5 rounded-xl text-neutral-400 active:outline-2 active:outline-offset-2 active:outline-[hsl(15,69%,37%)]'>
+												copy
+											</button>
+										</div>
+									</div>
+								</div>
+							}
 						</div>
 					</div>
-				</div>
-
-				<div className=''>
-					<div className=''>
-						<div className=''>
-							<div className=''>
-								<img src='images/icon-key.svg' alt='' />
-							</div>
-							<p className=''>Breakfast</p>
-						</div>
-						<p className=''>03</p>
-					</div>
-					<p className=''>Served 8 - 10:30</p>
-					<span className=''>On the terrace</span>
-					<p className=''>
-						Fresh figs, Marseille honey, pain au levain, and espresso.
-						Gluten-free option? Leave a note the night before.
-					</p>
-				</div>
+				))}
 			</section>
 		</>
 	);
