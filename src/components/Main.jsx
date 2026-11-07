@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const CHECKS = [
 	{ check: "CHECK IN", date: "25 Apr", day: "Saturday · 15:00" },
 	{ check: "CHECK OUT", date: "29 Apr", day: "Wednesday · 11:00" },
@@ -40,6 +42,16 @@ const FEATURES = [
 ];
 
 const Main = () => {
+	const password = "soleil-2026";
+	const [passwordText, setPasswordText] = useState(false);
+	const handlecopy = async (textToCopy) => {
+		await navigator.clipboard.writeText(textToCopy);
+		setPasswordText(true);
+
+		setTimeout(() => {
+			setPasswordText(false);
+		}, 3000);
+	};
 	return (
 		<>
 			<div className='flex flex-col md:flex-row md:items-center justify-between w-full'>
@@ -200,12 +212,13 @@ const Main = () => {
 										</p>
 
 										<div className='flex gap-2'>
-											<p className='font-semibold'>{item.password}</p>
+											<p className='font-semibold'>{password}</p>
 											<button
 												type='button'
-												onClick={() => window.location.reload()}
-												className='cursor-pointer uppercase border px-1.5 rounded-xl text-neutral-400 active:outline-2 active:outline-offset-2 active:outline-[hsl(15,69%,37%)]'>
-												copy
+												onClick={() => handlecopy(password)}
+												className='cursor-pointer uppercase border px-1.5 rounded-xl text-neutral-400 active:outline-2 active:outline-offset-2 active:outline-[hsl(15,69%,37%)]'
+												disabled={passwordText}>
+												{!passwordText ? "COPY" : "COPIED"}
 											</button>
 										</div>
 									</div>
