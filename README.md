@@ -54,4 +54,4 @@ I realized there are more to html and one of them is the copy to clipboard actio
 ## Author
 
 - Website - https://my-portfolio-gilt-tau-14.vercel.app/
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/fodlu)
+- Frontend Mentor - [@Fodlu](https://www.frontendmentor.io/profile/fodlu)
